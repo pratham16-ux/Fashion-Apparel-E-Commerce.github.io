@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Account — Stackly</title>
+<link rel="icon" href="https://wsrv.nl/?url=https://snabsolutions.in/wp-content/uploads/2026/02/stackly-snab-solutions.png&w=64&h=64&output=webp">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="dash-body">
+
+<div class="overlay-mask-dash" id="dashOverlay"></div>
+
+<div class="dash-shell">
+  <!-- SIDEBAR -->
+  <aside class="dash-sidebar" id="dashSidebar">
+    <button class="sidebar-close" id="sidebarClose"><i class="fa-solid fa-xmark"></i></button>
+    <a href="index.html" class="logo-chip"><img src="https://wsrv.nl/?url=https://snabsolutions.in/wp-content/uploads/2026/02/stackly-snab-solutions.png&w=200&h=80&output=webp&q=80&fit=inside" alt="Stackly"></a>
+
+    <nav class="dash-nav">
+      <div class="dash-nav-label">Account</div>
+      <a href="#" class="nav-link active" data-view="overview"><i class="fa-solid fa-gauge"></i> Overview</a>
+      <a href="#" class="nav-link" data-view="orders"><i class="fa-solid fa-box"></i> My Orders</a>
+      <a href="#" class="nav-link" data-view="wishlist"><i class="fa-regular fa-heart"></i> Wishlist</a>
+      <a href="#" class="nav-link" data-view="addresses"><i class="fa-solid fa-location-dot"></i> Addresses</a>
+      <div class="dash-nav-label">Preferences</div>
+      <a href="#" class="nav-link" data-view="settings"><i class="fa-solid fa-gear"></i> Settings</a>
+      <a href="shop.html"><i class="fa-solid fa-bag-shopping"></i> Back to Shop</a>
+    </nav>
+
+    <div class="dash-sidebar-foot">
+      <div class="sidebar-user">
+        <div class="avatar" id="sideAvatar">C</div>
+        <div class="u-meta">
+          <h6 id="sideName">Customer</h6>
+          <span id="sideId">STK-C-00000</span>
+        </div>
+      </div>
+      <button class="dash-link" id="sidebarLogout" style="color:#e07a86;"><i class="fa-solid fa-right-from-bracket" style="color:#e07a86;"></i> Log Out</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="dash-main">
+    <header class="dash-topbar">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <button class="dash-menu-btn" id="dashMenuBtn"><i class="fa-solid fa-bars"></i></button>
+        <div class="dash-topbar-title">
+          <h4 id="pageTitle">Overview</h4>
+          <span>Manage your account, orders and preferences</span>
+        </div>
+      </div>
+      <div class="dash-topbar-right">
+        <button class="icon-btn"><i class="fa-regular fa-bell"></i><span class="dot"></span></button>
+        <a href="shop.html" class="icon-btn"><i class="fa-solid fa-bag-shopping"></i></a>
+        <div class="dash-id-chip">
+          <div class="avatar" id="chipAvatar">C</div>
+          <div class="meta"><b id="chipName">Customer</b><small id="chipId">ID: STK-C-00000</small></div>
+        </div>
+        <button class="logout-btn" id="topLogout"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </div>
+    </header>
+
+    <div class="dash-content">
+
+      <!-- OVERVIEW -->
+      <section class="dash-view active" id="view-overview">
+        <div class="dash-welcome">
+          <span class="eyebrow">Good to see you</span>
+          <h2 id="welcomeName">Welcome back!</h2>
+          <p>Here's a quick look at your account activity. Logged in ID: <b id="welcomeId">STK-C-00000</b></p>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="top-row"><div class="ic"><i class="fa-solid fa-box"></i></div><span class="trend up">+2</span></div>
+            <h3>12</h3><span class="label">Total Orders</span>
+          </div>
+          <div class="stat-card">
+            <div class="top-row"><div class="ic"><i class="fa-regular fa-heart"></i></div><span class="trend up">+3</span></div>
+            <h3>8</h3><span class="label">Wishlist Items</span>
+          </div>
+          <div class="stat-card">
+            <div class="top-row"><div class="ic"><i class="fa-solid fa-truck-fast"></i></div></div>
+            <h3>2</h3><span class="label">In Transit</span>
+          </div>
+          <div class="stat-card">
+            <div class="top-row"><div class="ic"><i class="fa-solid fa-star"></i></div></div>
+            <h3>2,450</h3><span class="label">Reward Points</span>
+          </div>
+        </div>
+
+        <div class="dash-grid-2">
+          <div class="panel-card">
+            <div class="panel-head"><h4>Recent Orders</h4><a href="#" class="view-all" data-goto="orders">View All</a></div>
+            <div class="panel-body">
+              <table class="dash-table">
+                <thead><tr><th>Order</th><th>Item</th><th>Date</th><th>Amount</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>#ST-8842</td><td class="prod-cell"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1445205170230-053b83016050&w=80&h=80&fit=cover&output=webp&q=60">Wool Overcoat</td><td>Aug 14, 2026</td><td>$389.00</td><td><span class="status-pill delivered">Delivered</span></td></tr>
+                  <tr><td>#ST-8839</td><td class="prod-cell"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1509319117193-57bab727e09d&w=80&h=80&fit=cover&output=webp&q=60">Silk Evening Dress</td><td>Aug 09, 2026</td><td>$245.00</td><td><span class="status-pill processing">Processing</span></td></tr>
+                  <tr><td>#ST-8820</td><td class="prod-cell"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1515886657613-9f3515b0c78f&w=80&h=80&fit=cover&output=webp&q=60">Leather Accessory Set</td><td>Jul 28, 2026</td><td>$129.00</td><td><span class="status-pill cancelled">Cancelled</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-head"><h4>Membership Tier</h4></div>
+            <div class="panel-body" style="padding-top:16px;">
+              <p style="font-size:13px;color:var(--text-muted);margin-bottom:6px;">Gold Member — 550 points to Platinum</p>
+              <div class="progress-track"><div class="progress-fill" style="width:72%;"></div></div>
+            </div>
+            <div class="mini-list">
+              <div class="mini-list-item"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1490114538077-0a7f8cb49891&w=100&h=100&fit=cover&output=webp&q=55"><div class="grow"><h6>Silk Wrap Blouse</h6><span>Back in stock</span></div></div>
+              <div class="mini-list-item"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1441984904996-e0b6ba687e04&w=100&h=100&fit=cover&output=webp&q=55"><div class="grow"><h6>Tailored Blazer</h6><span>Price dropped 15%</span></div></div>
+              <div class="mini-list-item"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1552374196-c4e7ffc6e126&w=100&h=100&fit=cover&output=webp&q=55"><div class="grow"><h6>Autumn Edit</h6><span>New arrivals live</span></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORDERS -->
+      <section class="dash-view" id="view-orders">
+        <div class="dash-welcome"><span class="eyebrow">Order History</span><h2>My Orders</h2><p>Track, manage and review all your past purchases.</p></div>
+        <div class="panel-card">
+          <div class="panel-body" style="padding-top:20px;">
+            <table class="dash-table">
+              <thead><tr><th>Order</th><th>Item</th><th>Date</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody>
+                <tr><td>#ST-8842</td><td class="prod-cell"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1445205170230-053b83016050&w=80&h=80&fit=cover&output=webp&q=60">Wool Overcoat</td><td>Aug 14, 2026</td><td>$389.00</td><td><span class="status-pill delivered">Delivered</span></td><td class="row-actions"><button title="View"><i class="fa-regular fa-eye"></i></button><button title="Invoice"><i class="fa-solid fa-file-invoice"></i></button></td></tr>
+                <tr><td>#ST-8839</td><td class="prod-cell"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1509319117193-57bab727e09d&w=80&h=80&fit=cover&output=webp&q=60">Silk Evening Dress</td><td>Aug 09, 2026</td><td>$245.00</td><td><span class="status-pill processing">Processing</span></td><td class="row-actions"><button title="View"><i class="fa-regular fa-eye"></i></button><button title="Track"><i class="fa-solid fa-truck"></i></button></td></tr>
+                <tr><td>#ST-8820</td><td class="prod-cell"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1515886657613-9f3515b0c78f&w=80&h=80&fit=cover&output=webp&q=60">Leather Accessory Set</td><td>Jul 28, 2026</td><td>$129.00</td><td><span class="status-pill cancelled">Cancelled</span></td><td class="row-actions"><button title="View"><i class="fa-regular fa-eye"></i></button><button title="Reorder"><i class="fa-solid fa-rotate-right"></i></button></td></tr>
+                <tr><td>#ST-8795</td><td class="prod-cell"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1490481651871-ab68de25d43d&w=80&h=80&fit=cover&output=webp&q=60">Cashmere Scarf</td><td>Jul 12, 2026</td><td>$95.00</td><td><span class="status-pill delivered">Delivered</span></td><td class="row-actions"><button title="View"><i class="fa-regular fa-eye"></i></button><button title="Invoice"><i class="fa-solid fa-file-invoice"></i></button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- WISHLIST -->
+      <section class="dash-view" id="view-wishlist">
+        <div class="dash-welcome"><span class="eyebrow">Saved For Later</span><h2>My Wishlist</h2><p>Pieces you're keeping an eye on.</p></div>
+        <div class="wish-grid">
+          <div class="wish-card"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1490114538077-0a7f8cb49891&w=300&h=300&fit=cover&output=webp&q=60"><div class="wish-card-body"><h6>Silk Wrap Blouse</h6><span class="price">$145.00</span><button class="btn-solid-sm remove-wish">Remove</button></div></div>
+          <div class="wish-card"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1441984904996-e0b6ba687e04&w=300&h=300&fit=cover&output=webp&q=60"><div class="wish-card-body"><h6>Tailored Blazer</h6><span class="price">$225.00</span><button class="btn-solid-sm remove-wish">Remove</button></div></div>
+          <div class="wish-card"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1509319117193-57bab727e09d&w=300&h=300&fit=cover&output=webp&q=60"><div class="wish-card-body"><h6>Silk Evening Dress</h6><span class="price">$245.00</span><button class="btn-solid-sm remove-wish">Remove</button></div></div>
+          <div class="wish-card"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1515886657613-9f3515b0c78f&w=300&h=300&fit=cover&output=webp&q=60"><div class="wish-card-body"><h6>Leather Tote</h6><span class="price">$189.00</span><button class="btn-solid-sm remove-wish">Remove</button></div></div>
+        </div>
+      </section>
+
+      <!-- ADDRESSES -->
+      <section class="dash-view" id="view-addresses">
+        <div class="dash-welcome"><span class="eyebrow">Delivery Details</span><h2>My Addresses</h2><p>Manage your saved shipping addresses.</p></div>
+        <div class="dash-grid-2">
+          <div class="panel-card"><div class="panel-head"><h4>Home</h4><span class="status-pill active">Default</span></div><div class="panel-body" style="padding-top:16px;font-size:13.5px;color:var(--text-muted);line-height:1.8;">
+            <b style="color:var(--black);">Amara Chen</b><br>21 Rue Cambon<br>Paris, 75001, France<br>+33 1 23 45 67 89
+          </div></div>
+          <div class="panel-card"><div class="panel-head"><h4>Office</h4></div><div class="panel-body" style="padding-top:16px;font-size:13.5px;color:var(--text-muted);line-height:1.8;">
+            <b style="color:var(--black);">Amara Chen</b><br>92 Madison Ave<br>New York, NY 10016<br>+1 800 555 1234
+          </div></div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="dash-view" id="view-settings">
+        <div class="dash-welcome"><span class="eyebrow">Account</span><h2>Settings</h2><p>Update your personal information and preferences.</p></div>
+        <div class="panel-card">
+          <div class="panel-head"><h4>Personal Information</h4></div>
+          <form class="settings-form" id="settingsForm">
+            <div class="form-group"><label>Full Name</label><div class="input-wrap"><input type="text" id="setName" value="Amara Chen"></div></div>
+            <div class="form-group"><label>Email</label><div class="input-wrap"><input type="email" id="setEmail" value="amara@stackly.com"></div></div>
+            <div class="form-group"><label>Phone</label><div class="input-wrap"><input type="text" value="+1 800 555 1234"></div></div>
+            <div class="form-group"><label>Customer ID</label><div class="input-wrap"><input type="text" id="setId" value="STK-C-00000" disabled></div></div>
+            <div class="form-group full"><label>Bio</label><div class="input-wrap"><input type="text" value="Loves considered tailoring and autumn edits."></div></div>
+          </form>
+          <div class="save-bar">
+            <button type="button" class="btn-outline-sm">Cancel</button>
+            <button type="button" class="btn-solid-sm" id="saveSettings">Save Changes</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<div class="toast-mini" id="dashToast"><i class="fa-solid fa-circle-check"></i><span id="dashToastMsg">Done</span></div>
+
+<script src="js/dashboard.js"></script>
+<script>
+initDashboard('customer');
+</script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel — Stackly</title>
+<link rel="icon" href="https://wsrv.nl/?url=https://snabsolutions.in/wp-content/uploads/2026/02/stackly-snab-solutions.png&w=64&h=64&output=webp">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="dash-body">
+
+<div class="overlay-mask-dash" id="dashOverlay"></div>
+
+<div class="dash-shell">
+  <!-- SIDEBAR -->
+  <aside class="dash-sidebar" id="dashSidebar">
+    <button class="sidebar-close" id="sidebarClose"><i class="fa-solid fa-xmark"></i></button>
+    <a href="index.html" class="logo-chip"><img src="https://wsrv.nl/?url=https://snabsolutions.in/wp-content/uploads/2026/02/stackly-snab-solutions.png&w=200&h=80&output=webp&q=80&fit=inside" alt="Stackly"></a>
+
+    <nav class="dash-nav">
+      <div class="dash-nav-label">Admin</div>
+      <a href="#" class="nav-link active" data-view="overview"><i class="fa-solid fa-gauge"></i> Overview</a>
+      <a href="#" class="nav-link" data-view="products"><i class="fa-solid fa-shirt"></i> Products</a>
+      <a href="#" class="nav-link" data-view="orders"><i class="fa-solid fa-box"></i> Orders</a>
+      <a href="#" class="nav-link" data-view="customers"><i class="fa-solid fa-users"></i> Customers</a>
+      <div class="dash-nav-label">Preferences</div>
+      <a href="#" class="nav-link" data-view="settings"><i class="fa-solid fa-gear"></i> Settings</a>
+      <a href="index.html"><i class="fa-solid fa-store"></i> View Store</a>
+    </nav>
+
+    <div class="dash-sidebar-foot">
+      <div class="sidebar-user">
+        <div class="avatar" id="sideAvatar">A</div>
+        <div class="u-meta">
+          <h6 id="sideName">Admin</h6>
+          <span id="sideId">STK-A-0000</span>
+        </div>
+      </div>
+      <button class="dash-link" id="sidebarLogout" style="color:#e07a86;"><i class="fa-solid fa-right-from-bracket" style="color:#e07a86;"></i> Log Out</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="dash-main">
+    <header class="dash-topbar">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <button class="dash-menu-btn" id="dashMenuBtn"><i class="fa-solid fa-bars"></i></button>
+        <div class="dash-topbar-title">
+          <h4 id="pageTitle">Overview</h4>
+          <span>Store performance & management</span>
+        </div>
+      </div>
+      <div class="dash-topbar-right">
+        <button class="icon-btn"><i class="fa-regular fa-bell"></i><span class="dot"></span></button>
+        <a href="index.html" class="icon-btn"><i class="fa-solid fa-store"></i></a>
+        <div class="dash-id-chip">
+          <div class="avatar" id="chipAvatar">A</div>
+          <div class="meta"><b id="chipName">Admin</b><small id="chipId">ID: STK-A-0000</small></div>
+        </div>
+        <button class="logout-btn" id="topLogout"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </div>
+    </header>
+
+    <div class="dash-content">
+
+      <!-- OVERVIEW -->
+      <section class="dash-view active" id="view-overview">
+        <div class="dash-welcome">
+          <span class="eyebrow">Store Dashboard</span>
+          <h2 id="welcomeName">Welcome back, Admin</h2>
+          <p>Logged in ID: <b id="welcomeId">STK-A-0000</b> — here's how Stackly is performing today.</p>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card"><div class="top-row"><div class="ic"><i class="fa-solid fa-sack-dollar"></i></div><span class="trend up">+12%</span></div><h3>$48,290</h3><span class="label">Revenue (30 days)</span></div>
+          <div class="stat-card"><div class="top-row"><div class="ic"><i class="fa-solid fa-box"></i></div><span class="trend up">+8%</span></div><h3>312</h3><span class="label">Orders (30 days)</span></div>
+          <div class="stat-card"><div class="top-row"><div class="ic"><i class="fa-solid fa-users"></i></div><span class="trend up">+24</span></div><h3>2,184</h3><span class="label">Total Customers</span></div>
+          <div class="stat-card"><div class="top-row"><div class="ic"><i class="fa-solid fa-triangle-exclamation"></i></div><span class="trend down">Low</span></div><h3>6</h3><span class="label">Low Stock Items</span></div>
+        </div>
+
+        <div class="dash-grid-2">
+          <div class="panel-card">
+            <div class="panel-head"><h4>Recent Orders</h4><a href="#" class="view-all" data-goto="orders">View All</a></div>
+            <div class="panel-body">
+              <table class="dash-table">
+                <thead><tr><th>Order</th><th>Customer</th><th>Item</th><th>Amount</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>#ST-8842</td><td>Amara Chen</td><td class="prod-cell"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1445205170230-053b83016050&w=80&h=80&fit=cover&output=webp&q=60">Wool Overcoat</td><td>$389.00</td><td><span class="status-pill delivered">Delivered</span></td></tr>
+                  <tr><td>#ST-8839</td><td>Rohan Mehta</td><td class="prod-cell"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1509319117193-57bab727e09d&w=80&h=80&fit=cover&output=webp&q=60">Silk Evening Dress</td><td>$245.00</td><td><span class="status-pill processing">Processing</span></td></tr>
+                  <tr><td>#ST-8820</td><td>Elena Petrova</td><td class="prod-cell"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1515886657613-9f3515b0c78f&w=80&h=80&fit=cover&output=webp&q=60">Leather Accessory Set</td><td>$129.00</td><td><span class="status-pill cancelled">Cancelled</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-head"><h4>Top Products</h4></div>
+            <div class="mini-list">
+              <div class="mini-list-item"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1490114538077-0a7f8cb49891&w=100&h=100&fit=cover&output=webp&q=55"><div class="grow"><h6>Silk Wrap Blouse</h6><span>142 sold this month</span></div></div>
+              <div class="mini-list-item"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1441984904996-e0b6ba687e04&w=100&h=100&fit=cover&output=webp&q=55"><div class="grow"><h6>Tailored Blazer</h6><span>98 sold this month</span></div></div>
+              <div class="mini-list-item"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1445205170230-053b83016050&w=100&h=100&fit=cover&output=webp&q=55"><div class="grow"><h6>Wool Overcoat</h6><span>76 sold this month</span></div></div>
+              <div class="mini-list-item"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1515886657613-9f3515b0c78f&w=100&h=100&fit=cover&output=webp&q=55"><div class="grow"><h6>Leather Tote</h6><span>54 sold this month</span></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section class="dash-view" id="view-products">
+        <div class="dash-welcome"><span class="eyebrow">Catalog</span><h2>Products</h2><p>Manage inventory, pricing and stock levels.</p></div>
+        <div class="panel-card">
+          <div class="panel-head"><h4>All Products</h4><button class="btn-solid-sm" id="addProductBtn"><i class="fa-solid fa-plus"></i> Add Product</button></div>
+          <div class="panel-body" style="padding-top:20px;">
+            <table class="dash-table">
+              <thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody>
+                <tr><td class="prod-cell"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1490114538077-0a7f8cb49891&w=80&h=80&fit=cover&output=webp&q=60">Silk Wrap Blouse</td><td>Women</td><td>$145.00</td><td>84</td><td><span class="status-pill active">Active</span></td><td class="row-actions"><button><i class="fa-solid fa-pen"></i></button><button><i class="fa-solid fa-trash"></i></button></td></tr>
+                <tr><td class="prod-cell"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1441984904996-e0b6ba687e04&w=80&h=80&fit=cover&output=webp&q=60">Tailored Blazer</td><td>Men</td><td>$225.00</td><td>32</td><td><span class="status-pill active">Active</span></td><td class="row-actions"><button><i class="fa-solid fa-pen"></i></button><button><i class="fa-solid fa-trash"></i></button></td></tr>
+                <tr><td class="prod-cell"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1445205170230-053b83016050&w=80&h=80&fit=cover&output=webp&q=60">Wool Overcoat</td><td>Men</td><td>$389.00</td><td>4</td><td><span class="status-pill low">Low Stock</span></td><td class="row-actions"><button><i class="fa-solid fa-pen"></i></button><button><i class="fa-solid fa-trash"></i></button></td></tr>
+                <tr><td class="prod-cell"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1515886657613-9f3515b0c78f&w=80&h=80&fit=cover&output=webp&q=60">Leather Tote</td><td>Accessories</td><td>$189.00</td><td>0</td><td><span class="status-pill low">Out of Stock</span></td><td class="row-actions"><button><i class="fa-solid fa-pen"></i></button><button><i class="fa-solid fa-trash"></i></button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORDERS -->
+      <section class="dash-view" id="view-orders">
+        <div class="dash-welcome"><span class="eyebrow">Sales</span><h2>All Orders</h2><p>Review and update order statuses.</p></div>
+        <div class="panel-card">
+          <div class="panel-body" style="padding-top:20px;">
+            <table class="dash-table">
+              <thead><tr><th>Order</th><th>Customer</th><th>Date</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody>
+                <tr><td>#ST-8842</td><td>Amara Chen</td><td>Aug 14, 2026</td><td>$389.00</td><td><span class="status-pill delivered">Delivered</span></td><td class="row-actions"><button><i class="fa-regular fa-eye"></i></button><button><i class="fa-solid fa-file-invoice"></i></button></td></tr>
+                <tr><td>#ST-8839</td><td>Rohan Mehta</td><td>Aug 09, 2026</td><td>$245.00</td><td><span class="status-pill processing">Processing</span></td><td class="row-actions"><button><i class="fa-regular fa-eye"></i></button><button><i class="fa-solid fa-truck"></i></button></td></tr>
+                <tr><td>#ST-8820</td><td>Elena Petrova</td><td>Jul 28, 2026</td><td>$129.00</td><td><span class="status-pill cancelled">Cancelled</span></td><td class="row-actions"><button><i class="fa-regular fa-eye"></i></button><button><i class="fa-solid fa-rotate-right"></i></button></td></tr>
+                <tr><td>#ST-8795</td><td>Marcus Lee</td><td>Jul 12, 2026</td><td>$95.00</td><td><span class="status-pill pending">Pending</span></td><td class="row-actions"><button><i class="fa-regular fa-eye"></i></button><button><i class="fa-solid fa-check"></i></button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUSTOMERS -->
+      <section class="dash-view" id="view-customers">
+        <div class="dash-welcome"><span class="eyebrow">People</span><h2>Customers</h2><p>Browse and manage registered customers.</p></div>
+        <div class="panel-card">
+          <div class="panel-body" style="padding-top:20px;">
+            <table class="dash-table">
+              <thead><tr><th>Customer</th><th>Email</th><th>Orders</th><th>Total Spent</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody>
+                <tr><td class="prod-cell"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1544005313-94ddf0286df2&w=80&h=80&fit=cover&output=webp&q=60">Amara Chen</td><td>amara@mail.com</td><td>12</td><td>$2,340</td><td><span class="status-pill active">Active</span></td><td class="row-actions"><button><i class="fa-regular fa-eye"></i></button><button><i class="fa-solid fa-envelope"></i></button></td></tr>
+                <tr><td class="prod-cell"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1500648767791-00dcc994a43e&w=80&h=80&fit=cover&output=webp&q=60">Rohan Mehta</td><td>rohan@mail.com</td><td>7</td><td>$1,180</td><td><span class="status-pill active">Active</span></td><td class="row-actions"><button><i class="fa-regular fa-eye"></i></button><button><i class="fa-solid fa-envelope"></i></button></td></tr>
+                <tr><td class="prod-cell"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1438761681033-6461ffad8d80&w=80&h=80&fit=cover&output=webp&q=60">Elena Petrova</td><td>elena@mail.com</td><td>19</td><td>$3,920</td><td><span class="status-pill active">Active</span></td><td class="row-actions"><button><i class="fa-regular fa-eye"></i></button><button><i class="fa-solid fa-envelope"></i></button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="dash-view" id="view-settings">
+        <div class="dash-welcome"><span class="eyebrow">Admin Account</span><h2>Settings</h2><p>Update your admin profile and store preferences.</p></div>
+        <div class="panel-card">
+          <div class="panel-head"><h4>Admin Information</h4></div>
+          <form class="settings-form" id="settingsForm">
+            <div class="form-group"><label>Full Name</label><div class="input-wrap"><input type="text" id="setName" value="Store Admin"></div></div>
+            <div class="form-group"><label>Email</label><div class="input-wrap"><input type="email" id="setEmail" value="admin@stackly.com"></div></div>
+            <div class="form-group"><label>Phone</label><div class="input-wrap"><input type="text" value="+1 800 555 9900"></div></div>
+            <div class="form-group"><label>Admin ID</label><div class="input-wrap"><input type="text" id="setId" value="STK-A-0000" disabled></div></div>
+            <div class="form-group full"><label>Role</label><div class="input-wrap"><input type="text" value="Store Manager — Full Access"></div></div>
+          </form>
+          <div class="save-bar">
+            <button type="button" class="btn-outline-sm">Cancel</button>
+            <button type="button" class="btn-solid-sm" id="saveSettings">Save Changes</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<div class="toast-mini" id="dashToast"><i class="fa-solid fa-circle-check"></i><span id="dashToastMsg">Done</span></div>
+
+<script src="js/dashboard.js"></script>
+<script>
+initDashboard('admin');
+</script>
+</body>
+</html>
