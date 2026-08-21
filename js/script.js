@@ -123,7 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlayMask = document.getElementById('overlayMask');
   const cartToggle = document.getElementById('cartToggle');
   const cartClose = document.getElementById('cartClose');
-  function openCart(){ cartDrawer && cartDrawer.classList.add('open'); overlayMask && overlayMask.classList.add('show'); document.body.style.overflow='hidden'; }
+  function openCart(){ closeWishlistIfOpen(); cartDrawer && cartDrawer.classList.add('open'); overlayMask && overlayMask.classList.add('show'); document.body.style.overflow='hidden'; }
+  function closeWishlistIfOpen(){ const wd = document.getElementById('wishlistDrawer'); wd && wd.classList.remove('open'); }
   function closeCart(){ cartDrawer && cartDrawer.classList.remove('open'); overlayMask && overlayMask.classList.remove('show'); document.body.style.overflow=''; }
   cartToggle && cartToggle.addEventListener('click', e => { e.preventDefault(); openCart(); });
   cartClose && cartClose.addEventListener('click', closeCart);
@@ -160,12 +161,54 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ===================== WISHLIST (core commerce — always runs) ===================== */
   const WISH_KEY = 'stackly_wishlist';
   function getWishlist(){ try{ return JSON.parse(storeGet(WISH_KEY)) || []; }catch(e){ return []; } }
-  function saveWishlist(list){ storeSet(WISH_KEY, JSON.stringify(list)); renderWishBadge(); }
+  function saveWishlist(list){ storeSet(WISH_KEY, JSON.stringify(list)); renderWishBadge(); renderWishlist(); }
   function renderWishBadge(){
     const badge = document.getElementById('wishBadge');
     if(badge) badge.textContent = getWishlist().length;
   }
-  try{ renderWishBadge(); }catch(err){ console.error('Stackly initial wishlist render error:', err); }
+  function renderWishlist(){
+    try{
+      const list = getWishlist();
+      const itemsEl = document.getElementById('wishItems');
+      const countEl = document.getElementById('wishCount');
+      if(countEl) countEl.textContent = list.length;
+      if(!itemsEl) return;
+      if(!list.length){
+        itemsEl.innerHTML = '<p class="cart-empty">Your wishlist is empty. Tap the heart on items you love.</p>';
+        return;
+      }
+      itemsEl.innerHTML = list.map(name => (
+        '<div class="cart-line" data-name="' + name + '">' +
+          '<div class="cart-line-info">' +
+            '<h5>' + name + '</h5>' +
+            '<div class="cart-line-qty">' +
+              '<a href="#" class="cart-line-remove wish-line-remove">Remove</a>' +
+            '</div>' +
+          '</div>' +
+        '</div>'
+      )).join('');
+      itemsEl.querySelectorAll('.wish-line-remove').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.preventDefault();
+          const name = btn.closest('.cart-line').dataset.name;
+          const remaining = getWishlist().filter(n => n !== name);
+          saveWishlist(remaining);
+          const card = document.querySelector('.product-wish.active-wish');
+          document.querySelectorAll('.product-wish').forEach(wb => {
+            const c = wb.closest('.product-card');
+            const n = c && c.querySelector('h4') ? c.querySelector('h4').textContent.trim() : null;
+            if(n === name){
+              wb.classList.remove('active-wish');
+              const icon = wb.querySelector('i');
+              if(icon) icon.className = 'fa-regular fa-heart';
+              wb.style.color = '';
+            }
+          });
+        });
+      });
+    }catch(err){ console.error('Stackly renderWishlist error:', err); }
+  }
+  try{ renderWishBadge(); renderWishlist(); }catch(err){ console.error('Stackly initial wishlist render error:', err); }
 
   document.body.addEventListener('click', e => {
     const wishBtn = e.target.closest('.product-wish');
@@ -192,12 +235,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }catch(err){ console.error('Stackly wishlist error:', err); showToast('Something went wrong', 'fa-solid fa-triangle-exclamation'); }
   });
 
+  const wishlistDrawer = document.getElementById('wishlistDrawer');
   const wishlistToggle = document.getElementById('wishlistToggle');
-  wishlistToggle && wishlistToggle.addEventListener('click', e => {
-    e.preventDefault();
-    const list = getWishlist();
-    showToast(list.length ? ('You have ' + list.length + ' item(s) in your wishlist') : 'Your wishlist is empty', 'fa-solid fa-heart');
-  });
+  const wishlistClose = document.getElementById('wishlistClose');
+  function openWishlist(){ renderWishlist(); cartDrawer && cartDrawer.classList.remove('open'); wishlistDrawer && wishlistDrawer.classList.add('open'); overlayMask && overlayMask.classList.add('show'); document.body.style.overflow='hidden'; }
+  function closeWishlist(){ wishlistDrawer && wishlistDrawer.classList.remove('open'); overlayMask && overlayMask.classList.remove('show'); document.body.style.overflow=''; }
+  wishlistToggle && wishlistToggle.addEventListener('click', e => { e.preventDefault(); openWishlist(); });
+  wishlistClose && wishlistClose.addEventListener('click', closeWishlist);
 
   /* ===================== SEARCH OVERLAY ===================== */
   try{
@@ -215,16 +259,41 @@ document.addEventListener('DOMContentLoaded', () => {
       const q = searchInput.value.trim();
       if(q){ showToast('Searching for "' + q + '"...', 'fa-solid fa-magnifying-glass'); closeSearch(); window.location.href = 'shop.html'; }
     });
-    overlayMask && overlayMask.addEventListener('click', () => { closeCart(); closeSearch(); });
-    document.addEventListener('keydown', e => { if(e.key === 'Escape'){ closeSearch(); closeCart(); } });
+    overlayMask && overlayMask.addEventListener('click', () => { closeCart(); closeSearch(); closeWishlist(); });
+    document.addEventListener('keydown', e => { if(e.key === 'Escape'){ closeSearch(); closeCart(); closeWishlist(); } });
   }catch(err){ console.error('Stackly search error:', err); }
 
   /* ===================== FORMS: newsletter / contact ===================== */
   try{
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    function markFieldError(field, show){
+      if(!field) return;
+      field.classList.toggle('field-error', !!show);
+    }
     document.querySelectorAll('form').forEach(f => {
       if(f.id === 'searchForm') return;
+      const emailField = f.querySelector('input[type="email"]');
+      if(emailField){
+        emailField.addEventListener('input', () => markFieldError(emailField, false));
+      }
       f.addEventListener('submit', e => {
         e.preventDefault();
+        if(emailField){
+          const val = emailField.value.trim();
+          if(!val){
+            markFieldError(emailField, true);
+            showToast('Please enter your email address', 'fa-solid fa-triangle-exclamation');
+            emailField.focus();
+            return;
+          }
+          if(!EMAIL_RE.test(val)){
+            markFieldError(emailField, true);
+            showToast('Please enter a valid email address', 'fa-solid fa-triangle-exclamation');
+            emailField.focus();
+            return;
+          }
+          markFieldError(emailField, false);
+        }
         const btn = f.querySelector('button');
         const original = btn ? btn.textContent : '';
         if(btn){ btn.textContent = 'Thank You!'; }

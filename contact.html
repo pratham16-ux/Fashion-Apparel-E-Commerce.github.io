@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact — Stackly</title>
 <link rel="icon" href="https://wsrv.nl/?url=https://snabsolutions.in/wp-content/uploads/2026/02/stackly-snab-solutions.png&w=64&h=64&output=webp">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -23,7 +23,6 @@
     </nav>
     <div class="header-icons">
       <a href="#" class="desktop-only" id="searchToggle"><i class="fa-solid fa-magnifying-glass"></i></a>
-      <a href="#" class="desktop-only"><i class="fa-regular fa-user"></i></a>
       <a href="#" class="desktop-only" id="wishlistToggle"><i class="fa-regular fa-heart"></i><span class="icon-badge" id="wishBadge">0</span></a>
       <a href="#" class="cart-icon" id="cartToggle"><i class="fa-solid fa-bag-shopping"></i><span class="icon-badge" id="cartBadge">0</span></a>
       <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -200,7 +199,7 @@
       <div class="footer-col"><h5>Shop</h5><a href="shop.html">Women</a><a href="shop.html">Men</a><a href="shop.html">Accessories</a><a href="shop.html">Sale</a></div>
       <div class="footer-col"><h5>Company</h5><a href="about.html">About Us</a><a href="about.html">Sustainability</a><a href="contact.html">Careers</a><a href="contact.html">Press</a></div>
       <div class="footer-col"><h5>Support</h5><a href="contact.html">Contact Us</a><a href="#">Size Guide</a><a href="#">Shipping</a><a href="#">Returns</a></div>
-      <div class="footer-col footer-newsletter"><h5>Newsletter</h5><form><input type="email" placeholder="Email address"><button type="submit">Subscribe</button></form></div>
+      <div class="footer-col footer-newsletter"><h5>Newsletter</h5><form><input type="email" placeholder="Email address" required><button type="submit">Subscribe</button></form></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Stackly. All rights reserved.</span>
@@ -228,6 +227,7 @@
     <a href="shop.html" class="btn" style="width:100%;justify-content:center;margin-top:10px;"><span>Continue Shopping</span></a>
   </div>
 </aside>
+\n<aside class="cart-drawer" id="wishlistDrawer">\n  <div class="cart-drawer-head">\n    <h4>Your Wishlist (<span id="wishCount">0</span>)</h4>\n    <button class="cart-close" id="wishlistClose"><i class="fa-solid fa-xmark"></i></button>\n  </div>\n  <div class="cart-drawer-items" id="wishItems">\n    <p class="cart-empty">Your wishlist is empty. Tap the heart on items you love.</p>\n  </div>\n  <div class="cart-drawer-foot">\n    <a href="shop.html" class="btn btn-solid" style="width:100%;justify-content:center;"><span>Continue Shopping</span></a>\n  </div>\n</aside>
 
 <div class="search-overlay" id="searchOverlay">
   <button class="cart-close" id="searchClose"><i class="fa-solid fa-xmark"></i></button>
@@ -243,6 +243,6 @@
 
 <div class="toast-stack" id="toastStack"></div>
 
-<script src="script.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
