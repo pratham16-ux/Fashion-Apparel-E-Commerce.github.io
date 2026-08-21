@@ -20,6 +20,13 @@
     <a href="index.html" class="logo-chip"><img src="https://wsrv.nl/?url=https://snabsolutions.in/wp-content/uploads/2026/02/stackly-snab-solutions.png&w=200&h=80&output=webp&q=80&fit=inside" alt="Stackly"></a>
 
     <nav class="dash-nav">
+       <div class="sidebar-user">
+       <div class="avatar" id="sideAvatar">A</div>
+        <div class="u-meta">
+          <h6 id="sideName">Admin</h6>
+          <span id="sideId">STK-A-0000</span>
+        </div></div>
+        
       <div class="dash-nav-label">Admin</div>
       <a href="#" class="nav-link active" data-view="overview"><i class="fa-solid fa-gauge"></i> Overview</a>
       <a href="#" class="nav-link" data-view="products"><i class="fa-solid fa-shirt"></i> Products</a>
@@ -31,12 +38,8 @@
     </nav>
 
     <div class="dash-sidebar-foot">
-      <div class="sidebar-user">
-        <div class="avatar" id="sideAvatar">A</div>
-        <div class="u-meta">
-          <h6 id="sideName">Admin</h6>
-          <span id="sideId">STK-A-0000</span>
-        </div>
+     
+       
       </div>
       <button class="dash-link" id="sidebarLogout" style="color:#e07a86;"><i class="fa-solid fa-right-from-bracket" style="color:#e07a86;"></i> Log Out</button>
     </div>
@@ -53,7 +56,18 @@
         </div>
       </div>
       <div class="dash-topbar-right">
-        <button class="icon-btn"><i class="fa-regular fa-bell"></i><span class="dot"></span></button>
+        <div class="notif-wrap">
+          <button class="icon-btn" id="notifBtn"><i class="fa-regular fa-bell"></i><span class="dot notif-dot-live"></span></button>
+          <div class="notif-panel" id="notifPanel">
+            <div class="notif-panel-head"><h6>Notifications</h6><span id="notifClearAll">Mark all read</span></div>
+            <div class="notif-list">
+              <div class="notif-item unread"><div class="ni-ic"><i class="fa-solid fa-triangle-exclamation"></i></div><div class="ni-body"><p>Wool Overcoat is down to 4 units left.</p><span>12 minutes ago</span></div></div>
+              <div class="notif-item unread"><div class="ni-ic"><i class="fa-solid fa-box"></i></div><div class="ni-body"><p>New order #ST-8842 placed by Amara Chen.</p><span>1 hour ago</span></div></div>
+              <div class="notif-item"><div class="ni-ic"><i class="fa-solid fa-truck"></i></div><div class="ni-body"><p>Order #ST-8839 has shipped.</p><span>Yesterday</span></div></div>
+              <div class="notif-item"><div class="ni-ic"><i class="fa-solid fa-user-plus"></i></div><div class="ni-body"><p>3 new customers registered this week.</p><span>2 days ago</span></div></div>
+            </div>
+          </div>
+        </div>
         <a href="index.html" class="icon-btn"><i class="fa-solid fa-store"></i></a>
         <div class="dash-id-chip">
           <div class="avatar" id="chipAvatar">A</div>
@@ -80,6 +94,25 @@
           <div class="stat-card"><div class="top-row"><div class="ic"><i class="fa-solid fa-triangle-exclamation"></i></div><span class="trend down">Low</span></div><h3>6</h3><span class="label">Low Stock Items</span></div>
         </div>
 
+        <div class="panel-card">
+          <div class="panel-head"><h4>Sales Overview</h4><span style="font-size:12px;color:var(--text-muted);">Last 7 days</span></div>
+          <div class="chart-panel-body">
+            <div class="bar-chart">
+              <div class="bar-col"><div class="bar" style="height:52%;"></div><span>Mon</span></div>
+              <div class="bar-col"><div class="bar" style="height:68%;"></div><span>Tue</span></div>
+              <div class="bar-col"><div class="bar" style="height:44%;"></div><span>Wed</span></div>
+              <div class="bar-col"><div class="bar peak" style="height:92%;"></div><span>Thu</span></div>
+              <div class="bar-col"><div class="bar" style="height:60%;"></div><span>Fri</span></div>
+              <div class="bar-col"><div class="bar" style="height:78%;"></div><span>Sat</span></div>
+              <div class="bar-col"><div class="bar" style="height:35%;"></div><span>Sun</span></div>
+            </div>
+          </div>
+          <div class="chart-legend">
+            <span><i style="background:var(--gold);"></i> Regular day</span>
+            <span><i style="background:var(--burgundy);"></i> Peak day (Thu promo)</span>
+          </div>
+        </div>
+
         <div class="dash-grid-2">
           <div class="panel-card">
             <div class="panel-head"><h4>Recent Orders</h4><a href="#" class="view-all" data-goto="orders">View All</a></div>
@@ -103,6 +136,17 @@
               <div class="mini-list-item"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1445205170230-053b83016050&w=100&h=100&fit=cover&output=webp&q=55"><div class="grow"><h6>Wool Overcoat</h6><span>76 sold this month</span></div></div>
               <div class="mini-list-item"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1515886657613-9f3515b0c78f&w=100&h=100&fit=cover&output=webp&q=55"><div class="grow"><h6>Leather Tote</h6><span>54 sold this month</span></div></div>
             </div>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <div class="panel-head"><h4>Recent Activity</h4></div>
+          <div class="timeline">
+            <div class="timeline-item active"><h6>New order received</h6><p>Amara Chen placed order #ST-8842 for a Wool Overcoat.</p><time>12 minutes ago</time></div>
+            <div class="timeline-item done"><h6>Stock alert triggered</h6><p>Wool Overcoat inventory dropped below threshold (4 left).</p><time>1 hour ago</time></div>
+            <div class="timeline-item done"><h6>Order shipped</h6><p>Order #ST-8839 for Rohan Mehta left the warehouse.</p><time>Yesterday, 4:20 PM</time></div>
+            <div class="timeline-item done"><h6>New customer</h6><p>Marcus Lee created an account and made his first purchase.</p><time>2 days ago</time></div>
+            <div class="timeline-item done"><h6>Refund processed</h6><p>Order #ST-8820 was cancelled and refunded to Elena Petrova.</p><time>4 days ago</time></div>
           </div>
         </div>
       </section>
@@ -183,6 +227,14 @@
     </div>
   </main>
 </div>
+
+<nav class="dash-bottom-nav" id="dashBottomNav">
+  <a href="#" class="active" data-view="overview"><i class="fa-solid fa-gauge"></i><span>Overview</span></a>
+  <a href="#" data-view="products"><i class="fa-solid fa-shirt"></i><span>Products</span></a>
+  <a href="#" data-view="orders"><i class="fa-solid fa-box"></i><span>Orders</span></a>
+  <a href="#" data-view="customers"><i class="fa-solid fa-users"></i><span>Customers</span></a>
+  <a href="#" data-view="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+</nav>
 
 <div class="toast-mini" id="dashToast"><i class="fa-solid fa-circle-check"></i><span id="dashToastMsg">Done</span></div>
 

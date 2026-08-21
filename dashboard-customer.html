@@ -54,7 +54,18 @@
         </div>
       </div>
       <div class="dash-topbar-right">
-        <button class="icon-btn"><i class="fa-regular fa-bell"></i><span class="dot"></span></button>
+        <div class="notif-wrap">
+          <button class="icon-btn" id="notifBtn"><i class="fa-regular fa-bell"></i><span class="dot notif-dot-live"></span></button>
+          <div class="notif-panel" id="notifPanel">
+            <div class="notif-panel-head"><h6>Notifications</h6><span id="notifClearAll">Mark all read</span></div>
+            <div class="notif-list">
+              <div class="notif-item unread"><div class="ni-ic"><i class="fa-solid fa-truck"></i></div><div class="ni-body"><p>Your Silk Evening Dress order is on its way.</p><span>2 hours ago</span></div></div>
+              <div class="notif-item unread"><div class="ni-ic"><i class="fa-solid fa-tag"></i></div><div class="ni-body"><p>Tailored Blazer just dropped 15% in price.</p><span>Yesterday</span></div></div>
+              <div class="notif-item"><div class="ni-ic"><i class="fa-solid fa-star"></i></div><div class="ni-body"><p>You earned 120 reward points from your last order.</p><span>3 days ago</span></div></div>
+              <div class="notif-item"><div class="ni-ic"><i class="fa-regular fa-heart"></i></div><div class="ni-body"><p>Silk Wrap Blouse is back in stock.</p><span>5 days ago</span></div></div>
+            </div>
+          </div>
+        </div>
         <a href="shop.html" class="icon-btn"><i class="fa-solid fa-bag-shopping"></i></a>
         <div class="dash-id-chip">
           <div class="avatar" id="chipAvatar">C</div>
@@ -119,6 +130,27 @@
               <div class="mini-list-item"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1441984904996-e0b6ba687e04&w=100&h=100&fit=cover&output=webp&q=55"><div class="grow"><h6>Tailored Blazer</h6><span>Price dropped 15%</span></div></div>
               <div class="mini-list-item"><img src="https://wsrv.nl/?url=images.unsplash.com/photo-1552374196-c4e7ffc6e126&w=100&h=100&fit=cover&output=webp&q=55"><div class="grow"><h6>Autumn Edit</h6><span>New arrivals live</span></div></div>
             </div>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <div class="panel-head"><h4>Order #ST-8839 Tracking</h4><span class="status-pill processing">Processing</span></div>
+          <div class="timeline" style="padding-top:18px;">
+            <div class="timeline-item done"><h6>Order placed</h6><p>We received your order for a Silk Evening Dress.</p><time>Aug 09, 2026 — 10:14 AM</time></div>
+            <div class="timeline-item done"><h6>Payment confirmed</h6><p>Your payment was successfully processed.</p><time>Aug 09, 2026 — 10:15 AM</time></div>
+            <div class="timeline-item active"><h6>Preparing for shipment</h6><p>Your item is being packed at our warehouse.</p><time>Aug 10, 2026 — 9:02 AM</time></div>
+            <div class="timeline-item"><h6>Out for delivery</h6><p>Estimated to ship within 1–2 business days.</p><time>Pending</time></div>
+            <div class="timeline-item"><h6>Delivered</h6><p>Arrives at your default address.</p><time>Pending</time></div>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <div class="panel-head"><h4>Recent Activity</h4></div>
+          <div class="timeline">
+            <div class="timeline-item active"><h6>Order shipped</h6><p>Your Silk Evening Dress order left the warehouse.</p><time>2 hours ago</time></div>
+            <div class="timeline-item done"><h6>Reward points earned</h6><p>You earned 120 points from order #ST-8795.</p><time>3 days ago</time></div>
+            <div class="timeline-item done"><h6>Wishlist update</h6><p>Silk Wrap Blouse is back in stock.</p><time>5 days ago</time></div>
+            <div class="timeline-item done"><h6>Address updated</h6><p>You added a new delivery address in New York.</p><time>1 week ago</time></div>
           </div>
         </div>
       </section>
@@ -187,6 +219,14 @@
     </div>
   </main>
 </div>
+
+<nav class="dash-bottom-nav" id="dashBottomNav">
+  <a href="#" class="active" data-view="overview"><i class="fa-solid fa-gauge"></i><span>Overview</span></a>
+  <a href="#" data-view="orders"><i class="fa-solid fa-box"></i><span>Orders</span></a>
+  <a href="#" data-view="wishlist"><i class="fa-regular fa-heart"></i><span>Wishlist</span></a>
+  <a href="#" data-view="addresses"><i class="fa-solid fa-location-dot"></i><span>Address</span></a>
+  <a href="#" data-view="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+</nav>
 
 <div class="toast-mini" id="dashToast"><i class="fa-solid fa-circle-check"></i><span id="dashToastMsg">Done</span></div>
 
