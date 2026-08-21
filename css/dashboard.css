@@ -361,3 +361,41 @@ table.dash-table tr:last-child td{border-bottom:none;}
   .panel-head{padding:16px;}
   .panel-body{padding:4px 16px 16px;}
 }
+
+/* -------- 404 PAGE -------- */
+.notfound-page{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(201,166,104,.14), transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(124,40,54,.10), transparent 45%),
+    var(--ivory);
+  padding:40px 20px;text-align:center;
+}
+.notfound-inner{max-width:520px;}
+.notfound-inner .logo-chip{width:150px;height:60px;margin:0 auto 40px;}
+.notfound-inner .logo-chip img{width:150px;height:60px;}
+.notfound-code{
+  font-family:var(--ff-display);font-size:clamp(90px,16vw,150px);font-weight:600;line-height:1;
+  color:var(--black);position:relative;letter-spacing:.02em;
+}
+.notfound-code span{color:var(--gold);}
+.notfound-inner .eyebrow{display:block;margin:18px 0 8px;}
+.notfound-inner h1{font-family:var(--ff-display);font-size:clamp(24px,3vw,30px);font-weight:500;margin-bottom:14px;}
+.notfound-inner p{color:var(--text-muted);font-size:14.5px;line-height:1.7;max-width:400px;margin:0 auto 34px;}
+.notfound-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.notfound-search{
+  display:flex;align-items:center;max-width:400px;margin:0 auto 30px;
+  border:1px solid var(--line);border-radius:40px;padding:5px 6px 5px 20px;background:var(--white);
+}
+.notfound-search input{flex:1;border:none;background:transparent;font-size:14px;padding:8px 4px;color:var(--black);}
+.notfound-search input:focus{outline:none;}
+.notfound-search button{
+  width:38px;height:38px;border-radius:50%;border:none;background:var(--black);color:var(--ivory);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background .3s;
+}
+.notfound-search button:hover{background:var(--burgundy);}
+@media(max-width:480px){
+  .notfound-actions{flex-direction:column;}
+  .notfound-actions .btn{width:100%;justify-content:center;}
+}

@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function getCart(){
     try{
       const raw = JSON.parse(storeGet(CART_KEY)) || [];
-      if(!Array.isArray(raw)) return [];
+      if(!Array.isArray(raw)) throw new Error('corrupt cart');
       // sanitize every entry so a corrupted/legacy record can never crash rendering
       return raw.filter(i => i && typeof i.name === 'string').map(i => ({
         name: i.name,
@@ -54,7 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
         img: typeof i.img === 'string' ? i.img : '',
         qty: Number(i.qty) > 0 ? Math.floor(Number(i.qty)) : 1
       }));
-    }catch(e){ return []; }
+    }catch(e){
+      console.warn('Stackly: corrupted cart data found, resetting.', e);
+      try{ storeSet(CART_KEY, '[]'); }catch(e2){}
+      return [];
+    }
   }
   function saveCart(cart){ try{ storeSet(CART_KEY, JSON.stringify(cart)); }catch(e){} renderCart(); }
 
@@ -160,7 +164,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ===================== WISHLIST (core commerce — always runs) ===================== */
   const WISH_KEY = 'stackly_wishlist';
-  function getWishlist(){ try{ return JSON.parse(storeGet(WISH_KEY)) || []; }catch(e){ return []; } }
+  function getWishlist(){
+    try{
+      const raw = JSON.parse(storeGet(WISH_KEY)) || [];
+      if(!Array.isArray(raw)) throw new Error('corrupt wishlist');
+      // sanitize + migrate: older saves stored plain name strings — upgrade them
+      // to full {name, price, img} objects so price/image always render.
+      return raw.map(item => {
+        if(typeof item === 'string') return { name: item, price: 0, img: '' };
+        if(item && typeof item.name === 'string') return {
+          name: item.name,
+          price: Number(item.price) || 0,
+          img: typeof item.img === 'string' ? item.img : ''
+        };
+        return null;
+      }).filter(Boolean);
+    }catch(e){
+      console.warn('Stackly: corrupted wishlist data found, resetting.', e);
+      try{ storeSet(WISH_KEY, '[]'); }catch(e2){}
+      return [];
+    }
+  }
   function saveWishlist(list){ storeSet(WISH_KEY, JSON.stringify(list)); renderWishBadge(); renderWishlist(); }
   function renderWishBadge(){
     const badge = document.getElementById('wishBadge');
@@ -177,10 +201,12 @@ document.addEventListener('DOMContentLoaded', () => {
         itemsEl.innerHTML = '<p class="cart-empty">Your wishlist is empty. Tap the heart on items you love.</p>';
         return;
       }
-      itemsEl.innerHTML = list.map(name => (
-        '<div class="cart-line" data-name="' + name + '">' +
+      itemsEl.innerHTML = list.map(i => (
+        '<div class="cart-line" data-name="' + i.name + '">' +
+          (i.img ? '<img src="' + i.img + '" alt="' + i.name + '">' : '') +
           '<div class="cart-line-info">' +
-            '<h5>' + name + '</h5>' +
+            '<h5>' + i.name + '</h5>' +
+            (i.price ? '<div class="cl-price">$' + i.price.toFixed(2) + '</div>' : '') +
             '<div class="cart-line-qty">' +
               '<a href="#" class="cart-line-remove wish-line-remove">Remove</a>' +
             '</div>' +
@@ -191,9 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', e => {
           e.preventDefault();
           const name = btn.closest('.cart-line').dataset.name;
-          const remaining = getWishlist().filter(n => n !== name);
+          const remaining = getWishlist().filter(i => i.name !== name);
           saveWishlist(remaining);
-          const card = document.querySelector('.product-wish.active-wish');
           document.querySelectorAll('.product-wish').forEach(wb => {
             const c = wb.closest('.product-card');
             const n = c && c.querySelector('h4') ? c.querySelector('h4').textContent.trim() : null;
@@ -218,15 +243,18 @@ document.addEventListener('DOMContentLoaded', () => {
       wishBtn.classList.toggle('active-wish');
       const card = wishBtn.closest('.product-card');
       const name = card && card.querySelector('h4') ? card.querySelector('h4').textContent.trim() : 'Item';
+      const priceEl = card ? (card.querySelector('.product-price .new') || card.querySelector('.product-price')) : null;
+      const price = priceEl ? parseFloat(priceEl.textContent.replace(/[^0-9.]/g,'')) || 0 : 0;
+      const img = card && card.querySelector('img') ? card.querySelector('img').src : '';
       let list = getWishlist();
       const icon = wishBtn.querySelector('i');
       if(wishBtn.classList.contains('active-wish')){
-        if(list.indexOf(name) === -1) list.push(name);
+        if(!list.some(i => i.name === name)) list.push({ name, price, img });
         if(icon) icon.className = 'fa-solid fa-heart';
         wishBtn.style.color = '#7c2836';
         showToast('Added "' + name + '" to wishlist', 'fa-solid fa-heart');
       } else {
-        list = list.filter(n => n !== name);
+        list = list.filter(i => i.name !== name);
         if(icon) icon.className = 'fa-regular fa-heart';
         wishBtn.style.color = '';
         showToast('Removed "' + name + '" from wishlist', 'fa-regular fa-heart');

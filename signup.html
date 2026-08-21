@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account — Stackly</title>
+<link rel="icon" href="https://wsrv.nl/?url=https://snabsolutions.in/wp-content/uploads/2026/02/stackly-snab-solutions.png&w=64&h=64&output=webp">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<a href="index.html" class="auth-back-home"><i class="fa-solid fa-arrow-left"></i> Back to Store</a>
+
+<div class="auth-page">
+  <div class="auth-shell">
+
+    <!-- LEFT VISUAL -->
+    <div class="auth-visual">
+      <div class="logo-chip"><img src="https://wsrv.nl/?url=https://snabsolutions.in/wp-content/uploads/2026/02/stackly-snab-solutions.png&w=260&h=104&output=webp&q=80&fit=inside" alt="Stackly"></div>
+      <div>
+        <h2>Join the<br>Stackly Circle</h2>
+        <p>Create an account to save your wishlist, speed through checkout, and be first to know about new drops and private sales.</p>
+        <div class="auth-quote">
+          <span>Member Perks</span>
+          <p style="color:rgba(250,246,236,.85);font-style:italic;">"Reordered four times now. The consistency in quality and fit across their range is rare to find today."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="auth-form-side">
+      <div class="mobile-logo"><div class="logo-chip" style="width:150px;height:60px;margin:0 auto;"><img src="https://wsrv.nl/?url=https://snabsolutions.in/wp-content/uploads/2026/02/stackly-snab-solutions.png&w=400&h=160&output=webp&q=90&fit=inside" alt="Stackly"></div></div>
+
+      <div class="auth-heading">
+        <span class="eyebrow">Join Stackly</span>
+        <h1>Create Account</h1>
+        <p>Choose your account type to get started.</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab-btn active" data-tab="customer"><i class="fa-regular fa-user"></i> Customer</button>
+        <button type="button" class="auth-tab-btn" data-tab="admin"><i class="fa-solid fa-user-shield"></i> Admin</button>
+      </div>
+
+      <!-- CUSTOMER PANEL -->
+      <div class="auth-panel active" id="panel-customer">
+        <form id="customerSignupForm" novalidate>
+          <div class="form-group">
+            <label for="custName">Full Name</label>
+            <div class="input-wrap">
+              <i class="fa-regular fa-user"></i>
+              <input type="text" id="custName" placeholder="Jane Doe" autocomplete="name">
+            </div>
+            <span class="field-error" id="custNameErr">Please enter your full name.</span>
+          </div>
+          <div class="form-group">
+            <label for="custSignupEmail">Email Address</label>
+            <div class="input-wrap">
+              <i class="fa-regular fa-envelope"></i>
+              <input type="text" id="custSignupEmail" placeholder="you@example.com" autocomplete="email">
+            </div>
+            <span class="field-error" id="custSignupEmailErr">Please enter a valid email address.</span>
+          </div>
+          <div class="form-group">
+            <label for="custSignupPass">Password</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="custSignupPass" placeholder="Create a password" autocomplete="new-password" style="padding-right:34px;">
+              <button type="button" class="toggle-pass" data-target="custSignupPass"><i class="fa-regular fa-eye"></i></button>
+            </div>
+            <span class="field-error" id="custSignupPassErr">Password must be at least 4 characters.</span>
+          </div>
+          <div class="form-group">
+            <label for="custConfirmPass">Confirm Password</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="custConfirmPass" placeholder="Re-enter your password" autocomplete="new-password" style="padding-right:34px;">
+              <button type="button" class="toggle-pass" data-target="custConfirmPass"><i class="fa-regular fa-eye"></i></button>
+            </div>
+            <span class="field-error" id="custConfirmPassErr">Passwords do not match.</span>
+          </div>
+          <div class="auth-row" style="margin-bottom:24px;">
+            <label class="remember-me"><input type="checkbox" id="custTerms"> I agree to the Terms &amp; Privacy Policy</label>
+          </div>
+          <button type="submit" class="auth-submit" id="custSignupSubmit"><span>Create Customer Account</span><i class="fa-solid fa-arrow-right"></i></button>
+          <div class="auth-demo-hint">Demo signup — fill in the fields above (min 4 char password) to create a local demo account.</div>
+        </form>
+      </div>
+
+      <!-- ADMIN PANEL -->
+      <div class="auth-panel" id="panel-admin">
+        <form id="adminSignupForm" novalidate>
+          <div class="form-group">
+            <label for="adminName">Full Name</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-user-shield"></i>
+              <input type="text" id="adminName" placeholder="Jane Doe" autocomplete="name">
+            </div>
+            <span class="field-error" id="adminNameErr">Please enter your full name.</span>
+          </div>
+          <div class="form-group">
+            <label for="adminSignupEmail">Admin Email</label>
+            <div class="input-wrap">
+              <i class="fa-regular fa-envelope"></i>
+              <input type="text" id="adminSignupEmail" placeholder="admin@stackly.com" autocomplete="email">
+            </div>
+            <span class="field-error" id="adminSignupEmailErr">Please enter a valid admin email address.</span>
+          </div>
+          <div class="form-group">
+            <label for="adminSignupPass">Password</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="adminSignupPass" placeholder="Create a password" autocomplete="new-password" style="padding-right:34px;">
+              <button type="button" class="toggle-pass" data-target="adminSignupPass"><i class="fa-regular fa-eye"></i></button>
+            </div>
+            <span class="field-error" id="adminSignupPassErr">Password must be at least 4 characters.</span>
+          </div>
+          <div class="form-group">
+            <label for="adminConfirmPass">Confirm Password</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="adminConfirmPass" placeholder="Re-enter your password" autocomplete="new-password" style="padding-right:34px;">
+              <button type="button" class="toggle-pass" data-target="adminConfirmPass"><i class="fa-regular fa-eye"></i></button>
+            </div>
+            <span class="field-error" id="adminConfirmPassErr">Passwords do not match.</span>
+          </div>
+          <div class="form-group">
+            <label for="adminCode">Admin Invite Code</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-key"></i>
+              <input type="text" id="adminCode" placeholder="Enter invite code" autocomplete="off">
+            </div>
+            <span class="field-error" id="adminCodeErr">An invite code is required to create an admin account.</span>
+          </div>
+          <div class="auth-row" style="margin-bottom:24px;">
+            <label class="remember-me"><input type="checkbox" id="adminTerms"> I agree to the Terms &amp; Privacy Policy</label>
+          </div>
+          <button type="submit" class="auth-submit" id="adminSignupSubmit"><span>Create Admin Account</span><i class="fa-solid fa-arrow-right"></i></button>
+          <div class="auth-demo-hint">Demo signup — any invite code works, e.g. <b>STACKLY-ADMIN</b>.</div>
+        </form>
+      </div>
+
+      <p class="auth-switch-note">Already have an account? <a href="login.html">Sign in</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="toast-mini" id="signupToast"><i class="fa-solid fa-circle-check"></i><span id="signupToastMsg">Account created successfully</span></div>
+
+<script>
+// ---------- Tab switching ----------
+const tabBtns = document.querySelectorAll('.auth-tab-btn');
+tabBtns.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    tabBtns.forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.auth-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-'+btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ---------- Password show/hide ----------
+document.querySelectorAll('.toggle-pass').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const input = document.getElementById(btn.dataset.target);
+    const icon = btn.querySelector('i');
+    if(input.type === 'password'){ input.type='text'; icon.className='fa-regular fa-eye-slash'; }
+    else{ input.type='password'; icon.className='fa-regular fa-eye'; }
+  });
+});
+
+function showToast(msg){
+  const t = document.getElementById('signupToast');
+  document.getElementById('signupToastMsg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2200);
+}
+
+function validateEmail(val){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim());
+}
+function validateName(val){
+  return val.trim().length >= 2;
+}
+
+// ---------- Customer signup ----------
+document.getElementById('customerSignupForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('custName');
+  const email = document.getElementById('custSignupEmail');
+  const pass = document.getElementById('custSignupPass');
+  const confirm = document.getElementById('custConfirmPass');
+  const nameErr = document.getElementById('custNameErr');
+  const emailErr = document.getElementById('custSignupEmailErr');
+  const passErr = document.getElementById('custSignupPassErr');
+  const confirmErr = document.getElementById('custConfirmPassErr');
+  let valid = true;
+
+  if(!validateName(name.value)){ nameErr.classList.add('show'); valid = false; } else nameErr.classList.remove('show');
+  if(!validateEmail(email.value)){ emailErr.classList.add('show'); valid = false; } else emailErr.classList.remove('show');
+  if(pass.value.trim().length < 4){ passErr.classList.add('show'); valid = false; } else passErr.classList.remove('show');
+  if(confirm.value !== pass.value || !confirm.value){ confirmErr.classList.add('show'); valid = false; } else confirmErr.classList.remove('show');
+  if(!valid) return;
+
+  const btn = document.getElementById('custSignupSubmit');
+  btn.disabled = true;
+  btn.querySelector('span').textContent = 'Creating Account...';
+
+  setTimeout(()=>{
+    showToast('Account created! Redirecting to sign in...');
+    setTimeout(()=>{ window.location.href = 'login.html'; }, 900);
+  }, 700);
+});
+
+// ---------- Admin signup ----------
+document.getElementById('adminSignupForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('adminName');
+  const email = document.getElementById('adminSignupEmail');
+  const pass = document.getElementById('adminSignupPass');
+  const confirm = document.getElementById('adminConfirmPass');
+  const code = document.getElementById('adminCode');
+  const nameErr = document.getElementById('adminNameErr');
+  const emailErr = document.getElementById('adminSignupEmailErr');
+  const passErr = document.getElementById('adminSignupPassErr');
+  const confirmErr = document.getElementById('adminConfirmPassErr');
+  const codeErr = document.getElementById('adminCodeErr');
+  let valid = true;
+
+  if(!validateName(name.value)){ nameErr.classList.add('show'); valid = false; } else nameErr.classList.remove('show');
+  if(!validateEmail(email.value)){ emailErr.classList.add('show'); valid = false; } else emailErr.classList.remove('show');
+  if(pass.value.trim().length < 4){ passErr.classList.add('show'); valid = false; } else passErr.classList.remove('show');
+  if(confirm.value !== pass.value || !confirm.value){ confirmErr.classList.add('show'); valid = false; } else confirmErr.classList.remove('show');
+  if(!code.value.trim()){ codeErr.classList.add('show'); valid = false; } else codeErr.classList.remove('show');
+  if(!valid) return;
+
+  const btn = document.getElementById('adminSignupSubmit');
+  btn.disabled = true;
+  btn.querySelector('span').textContent = 'Creating Account...';
+
+  setTimeout(()=>{
+    showToast('Admin account created! Redirecting to sign in...');
+    setTimeout(()=>{ window.location.href = 'login.html'; }, 900);
+  }, 700);
+});
+</script>
+</body>
+</html>

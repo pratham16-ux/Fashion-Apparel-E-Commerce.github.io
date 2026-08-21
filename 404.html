@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found — Stackly</title>
+<link rel="icon" href="https://wsrv.nl/?url=https://snabsolutions.in/wp-content/uploads/2026/02/stackly-snab-solutions.png&w=64&h=64&output=webp">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<a href="index.html" class="auth-back-home"><i class="fa-solid fa-arrow-left"></i> Back to Store</a>
+
+<div class="notfound-page">
+  <div class="notfound-inner">
+    <div class="logo-chip"><img src="https://wsrv.nl/?url=https://snabsolutions.in/wp-content/uploads/2026/02/stackly-snab-solutions.png&w=260&h=104&output=webp&q=80&fit=inside" alt="Stackly"></div>
+
+    <div class="notfound-code">4<span>0</span>4</div>
+    <span class="eyebrow">Lost In The Edit</span>
+    <h1>This Page Has Left the Rack</h1>
+    <p>The page you're looking for has either sold out, moved, or never existed. Let's get you back to something worth wearing.</p>
+
+    <form class="notfound-search" id="notfoundSearchForm">
+      <input type="text" id="notfoundSearchInput" placeholder="Search for products, categories..." autocomplete="off">
+      <button type="submit" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+
+    <div class="notfound-actions">
+      <a href="index.html" class="btn btn-solid"><span>Back to Home</span></a>
+      <a href="shop.html" class="btn btn-gold"><span>Shop Collection</span></a>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('notfoundSearchForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const q = document.getElementById('notfoundSearchInput').value.trim();
+  window.location.href = 'shop.html' + (q ? ('?q=' + encodeURIComponent(q)) : '');
+});
+</script>
+</body>
+</html>
